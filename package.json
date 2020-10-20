@@ -28,6 +28,7 @@
     "cross-env": "^7.0.2",
     "husky": "^4.3.0",
     "npm-run-all": "^4.1.5",
+    "object-path": "^0.11.5",
     "prettier": "^2.1.2",
     "react-scripts": "^4.0.0-next.98",
     "typescript": "^4.0.3"
@@ -40,7 +41,8 @@
     "test:exercises": "npm run test -- testing.*exercises\\/ --onlyChanged",
     "setup": "node setup",
     "lint": "eslint .",
-    "validate": "npm-run-all --parallel build test:coverage lint"
+    "validate": "npm-run-all --parallel build test:coverage lint",
+    "preinstall": "npx npm-force-resolutions"
   },
   "husky": {
     "hooks": {
@@ -84,5 +86,8 @@
   "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com/)",
   "bugs": {
     "url": "https://github.com/kentcdodds/advanced-react-patterns/issues"
+  },
+  "resolutions": {
+    "object-path": "^0.11.5"
   }
 }
