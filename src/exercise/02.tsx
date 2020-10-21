@@ -30,16 +30,19 @@ const Toggle: FC = ({children}) => {
 
   return (
     <>
-      {React.Children.map(children, (child, index) => {
-        if (
-          React.isValidElement<ToggleOnOffProps>(child) &&
-          (child.type === ToggleOn || child.type === ToggleOff)
-        ) {
-          return React.cloneElement(child, {
-            on,
-          });
+      {React.Children.map(children, child => {
+        if (!React.isValidElement(child)) {
+          return null;
         }
-        if (React.isValidElement(child) && child.type === ToggleButton) {
+        if (child.type === ToggleOn || child.type === ToggleOff) {
+          return React.cloneElement(
+            child as React.ReactElement<ToggleOnOffProps>,
+            {
+              on,
+            },
+          );
+        }
+        if (child.type === ToggleButton) {
           return (
             <ToggleButtonInner
               on={on}
@@ -48,9 +51,7 @@ const Toggle: FC = ({children}) => {
             />
           );
         }
-        if (React.isValidElement(child)) {
-          return child;
-        }
+        return child;
       })}
     </>
   );
