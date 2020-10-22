@@ -36,6 +36,7 @@ class Switch extends React.Component<SwitchProps> {
     ]
       .filter(Boolean)
       .join(' ');
+
     return (
       <label aria-label={ariaLabel || 'Toggle'} style={{display: 'block'}}>
         <input
